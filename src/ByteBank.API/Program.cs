@@ -18,6 +18,9 @@ builder.Services.AddDbContext<ByteBankContext>(options =>
 {
     options.UseSqlServer("Name=ByteBankConnection");
 });
+
+builder.Services.AddAutoMapper(typeof(Program));
+
 builder.Services.AddScoped<IRepository<Agencia>, AgenciasRepository>();
 builder.Services.AddScoped<IAgenciasService, AgenciasService>();
 
