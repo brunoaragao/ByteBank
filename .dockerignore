@@ -1,0 +1,6 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+
+# Identity server - keys
+src/ByteBank.Api/keys/

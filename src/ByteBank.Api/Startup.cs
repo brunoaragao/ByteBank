@@ -51,12 +51,11 @@ public class Startup
             .AddInMemoryClients(Config.Clients)
             .AddProfileService<ProfileService<IdentityUser>>()
             .AddAspNetIdentity<IdentityUser>();
-
         services
             .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
-                options.Authority = "http://localhost:5110";
+                options.Authority = Configuration["Identity:Authority"];
                 options.RequireHttpsMetadata = false;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {

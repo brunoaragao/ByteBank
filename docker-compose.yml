@@ -1,0 +1,30 @@
+services:
+  bytebank-api:
+    # image: brunoaragao/bytebank:latest
+    build:
+      .
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    restart: on-failure
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - Identity__Authority=http://bytebank-api:80
+      - ConnectionStrings__ByteBankConnection=Server=db;User ID=sa;Password=P@ssw0rd;Initial Catalog=ByteBank;TrustServerCertificate=true
+      - ConnectionStrings__IdentityConnection=Server=db;User ID=sa;Password=P@ssw0rd;Initial Catalog=Identity;TrustServerCertificate=true
+
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    restart: always
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssw0rd
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./db:/var/opt/mssql/data
+
+volumes:
+  db:

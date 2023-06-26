@@ -367,3 +367,6 @@ FodyWeavers.xsd
 /src/Directory.Build.props
 /.github/workflows/dotnet.yml
 /src/ByteBank.API/Repository/ClienteRepository.cs
+
+# Identity server - keys
+keys
